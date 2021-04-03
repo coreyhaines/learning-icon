@@ -1,9 +1,24 @@
 link testlibrary
 
 procedure main()
+  formatFailureMessage_tests()
   equal_tests()
   listToString_tests()
   assertEqual_tests()
+end
+
+procedure formatFailureMessage_tests()
+  write("Testing formatFailureMessage")
+  assertEqual("Expected 1, but received 2",
+      formatFailureMessage(1, 2)
+      )
+  assertEqual("Expected \"foo\", but received \"bar\"",
+      formatFailureMessage("foo", "bar")
+      )
+  assertEqual("Expected [1, 2], but received [1, 3]",
+      formatFailureMessage([1, 2], [1, 3])
+      )
+  write()
 end
 
 procedure listToString_tests()
@@ -12,6 +27,7 @@ procedure listToString_tests()
   assertEqual("[1]", listToString([1]))
   assertEqual("[1, 2]", listToString([1,2]))
   assertEqual("[\"foo\", \"bar\"]", listToString(["foo", "bar"]))
+  write()
 end
 
 procedure equal_tests()
@@ -35,6 +51,7 @@ procedure assertEqual_tests()
   write("Testing assertEqual")
   string_tests()
   number_tests()
+  write()
 end
 
 procedure string_tests()

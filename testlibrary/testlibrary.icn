@@ -12,19 +12,24 @@ procedure compareList(first, second)
     not (i := 1 to *first & not equal(first[i], second[i]))
 end
 
-procedure formatListEntry(entry)
-  return case type(entry) of {
-    "string": "\""||entry||"\""
-    default : entry
+procedure formatFailureMessage(expected, actual)
+  return "Expected "||toString(expected)||", but received "||toString(actual)
+end
+
+procedure toString(value)
+  return case type(value) of {
+    "string": "\""||value||"\""
+    "list": listToString(value)
+    default: value
   }
 end
 
 procedure listToString(listToFormat)
   asString := "["
   every a := !listToFormat[1:-1] do {
-    asString := asString||formatListEntry(a)||", "
+    asString := asString||toString(a)||", "
   }
-  asString := asString||formatListEntry(listToFormat[-1])
+  asString := asString||toString(listToFormat[-1])
   asString := asString||"]"
 
   return asString
@@ -32,7 +37,8 @@ end
 
 procedure assertEqual(expected, actual)
   if equal(expected, actual) then
-    write("P")
+    writes("P")
   else
-    write("F: expected '", expected, "' but got '", actual, "'")
+    write() &
+      write("F: ", formatFailureMessage(expected, actual))
 end
