@@ -1,5 +1,19 @@
+procedure equal(first, second)
+  return case type(first) of {
+    "integer": first = second
+    "string": first == second
+    "list" : compareList(first, second)
+    default : first === second
+  }
+end
+
+procedure compareList(first, second)
+  return *first = *second &
+    not (i := 1 to *first & not equal(first[i], second[i]))
+end
+
 procedure assertEqual(expected, actual)
-  if expected === actual then
+  if equal(expected, actual) then
     write("P")
   else
     write("F: expected '", expected, "' but got '", actual, "'")
