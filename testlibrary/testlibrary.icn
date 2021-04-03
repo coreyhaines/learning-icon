@@ -1,0 +1,6 @@
+procedure assertEqual(expected, actual)
+  if expected === actual then
+    write("P")
+  else
+    write("F: expected '", expected, "' but got '", actual, "'")
+end

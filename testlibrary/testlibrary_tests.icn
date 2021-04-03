@@ -1,0 +1,15 @@
+link testlibrary
+procedure main()
+  string_tests()
+  number_tests()
+end
+
+procedure string_tests()
+  assertEqual("foo", "foo") # Expected pass
+  assertEqual("foo", "bar") # Expected fail
+end
+
+procedure number_tests()
+  assertEqual(1, 1) # Expected pass
+  assertEqual(1, 2) # Expected fail
+end
