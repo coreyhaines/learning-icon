@@ -2,7 +2,16 @@ link testlibrary
 
 procedure main()
   equal_tests()
+  listToString_tests()
   assertEqual_tests()
+end
+
+procedure listToString_tests()
+  write("Testing listToString")
+  assertEqual("[]", listToString([]))
+  assertEqual("[1]", listToString([1]))
+  assertEqual("[1, 2]", listToString([1,2]))
+  assertEqual("[\"foo\", \"bar\"]", listToString(["foo", "bar"]))
 end
 
 procedure equal_tests()

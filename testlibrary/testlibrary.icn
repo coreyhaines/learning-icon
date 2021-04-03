@@ -12,6 +12,24 @@ procedure compareList(first, second)
     not (i := 1 to *first & not equal(first[i], second[i]))
 end
 
+procedure formatListEntry(entry)
+  return case type(entry) of {
+    "string": "\""||entry||"\""
+    default : entry
+  }
+end
+
+procedure listToString(listToFormat)
+  asString := "["
+  every a := !listToFormat[1:-1] do {
+    asString := asString||formatListEntry(a)||", "
+  }
+  asString := asString||formatListEntry(listToFormat[-1])
+  asString := asString||"]"
+
+  return asString
+end
+
 procedure assertEqual(expected, actual)
   if equal(expected, actual) then
     write("P")
