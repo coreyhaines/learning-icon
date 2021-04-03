@@ -48,9 +48,10 @@ procedure equal_tests()
 end
 
 procedure assertEqual_tests()
-  write("Testing assertEqual")
+  write("Testing assertEqual. Should be P, then F.")
   string_tests()
   number_tests()
+  list_tests()
   write()
 end
 
@@ -62,4 +63,9 @@ end
 procedure number_tests()
   assertEqual(1, 1) # Expected pass
   assertEqual(1, 2) # Expected fail
+end
+
+procedure list_tests()
+  assertEqual([1, 2], [1, 2]) # Expected pass
+  assertEqual([1, 2], [1, 3]) # Expected fail
 end
