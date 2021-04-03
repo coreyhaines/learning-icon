@@ -1,3 +1,11 @@
+procedure assertEqual(expected, actual)
+  if equal(expected, actual) then
+    writes("P")
+  else
+    write() &
+      write("F: ", formatFailureMessage(expected, actual))
+end
+
 procedure equal(first, second)
   return case type(first) of {
     "integer": first = second
@@ -33,12 +41,4 @@ procedure listToString(listToFormat)
   asString := asString||"]"
 
   return asString
-end
-
-procedure assertEqual(expected, actual)
-  if equal(expected, actual) then
-    writes("P")
-  else
-    write() &
-      write("F: ", formatFailureMessage(expected, actual))
 end
